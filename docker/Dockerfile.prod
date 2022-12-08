@@ -1,0 +1,17 @@
+FROM python:3.8
+
+ENV HOME /root
+
+WORKDIR ${HOME}/project
+
+COPY requirements.txt .
+RUN pip3 install -r ${HOME}/project/requirements.txt
+
+# Set build version
+ARG BUILD_VERSION
+ENV BUILD_VERSION $BUILD_VERSION
+
+COPY . .
+
+CMD ["/bin/sh", "-c", "./scripts/launch.sh"]
+EXPOSE 8000

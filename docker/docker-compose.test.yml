@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+  test:
+    build:
+      context: ../.
+      args:
+        BUILD_VERSION: ${BUILD_VERSION:-0.0.0-default}
+      dockerfile: ./docker/Dockerfile.test
+    depends_on:
+      demo:
+        condition: service_healthy
+    network_mode: host
+    volumes:
+      - ../:/root/project
+    command: |
+      bash -c "
+      pip3 install pytest
+      python3 -m pytest -v tests
+      "

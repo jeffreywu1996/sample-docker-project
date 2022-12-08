@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+  demo:
+    build:
+      context: ../.
+      args:
+        BUILD_VERSION: ${BUILD_VERSION:-0.0.0-default}
+      dockerfile: ./docker/Dockerfile.prod
+    healthcheck:
+      test: curl -fX GET http://0.0.0.0:8000/healthcheck || exit 1
+      interval: 1s
+      timeout: 10s
+      retries: 20
+    ports:
+      - 8000:8000
+    volumes:
+      - ../:/root/project
+    networks:
+      default:

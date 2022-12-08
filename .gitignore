@@ -1,0 +1,16 @@
+__pycache__/
+
+cmake/
+
+*.o
+
+.idea
+venv
+
+*.rdb
+
+.DS_Store
+
+*.log
+
+.env

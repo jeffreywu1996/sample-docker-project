@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  unittest:
+    build:
+      context: ../.
+      args:
+        BUILD_VERSION: ${BUILD_VERSION:-0.0.0-default}
+      dockerfile: ./docker/Dockerfile.test
+    volumes:
+      - ../:/root/project
+    command: |
+      bash -c "
+      python3 -m pytest -v
+      "
