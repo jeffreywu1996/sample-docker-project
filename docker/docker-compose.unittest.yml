@@ -11,5 +11,5 @@ services:
       - ../:/root/project
     command: |
       bash -c "
-      python3 -m pytest -v
+      python3 -m pytest -v tests/unit
       "

@@ -15,6 +15,9 @@ services:
       - ../:/root/project
     command: |
       bash -c "
-      pip3 install pytest
-      python3 -m pytest -v tests
+      pip3 install pytest requests
+      # sleep 1h
+      python3 -m pytest -v tests/int
       "
+    # networks:
+    #   default:

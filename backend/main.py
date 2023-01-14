@@ -13,7 +13,7 @@ async def init_conns():
 
 app.include_router(
     demo.router,
-    prefix="/demo",
+    # prefix="/demo",
     tags=["Thing"],
     responses={404: {
         "message": "Not found"
@@ -22,7 +22,7 @@ app.include_router(
 
 app.include_router(
     healthcheck.router,
-    prefix="/healthcheck",
+    # prefix="/healthcheck",
     tags=["Thing"],
     responses={404: {
         "message": "Not found"
